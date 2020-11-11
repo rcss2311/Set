@@ -12,6 +12,9 @@ public class Program {
 		set.add("Tv");
 		set.add("Notebook");
 		set.add("Tablet");
+		
+		set.remove("Tablet");
+		
 		System.out.println(set.contains("Notebook")); // testa se existe retorna booleano
 			for (String p : set) {
 				System.out.println(p);
