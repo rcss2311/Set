@@ -1,15 +1,10 @@
 package application;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
-import java.time.Instant;
-import java.util.Date;
 import java.util.HashSet;
 import java.util.Scanner;
 import java.util.Set;
 
-import entities.LogEntry;
+import entities.Usuario;
 
 public class Program {
 
@@ -17,29 +12,37 @@ public class Program {
 
 		Scanner sc = new Scanner(System.in);
 		
-		System.out.print("Enter file full path: ");
-		String path = sc.nextLine();
 		
-		try(BufferedReader br = new BufferedReader(new FileReader(path))){
-			
-			Set<LogEntry> set = new HashSet<>();
-			
-			String line = br.readLine();
-			while(line != null) {
-				String [] fields = line.split(" ");
-				String userName = fields[0];
-				Date moment = Date.from(Instant.parse(fields[1]));
-				
-				set.add(new LogEntry(userName, moment));
-				
-				line = br.readLine();
-			}
-			System.out.println("Total users: "+set.size());
-			
+		Set<Usuario> set = new HashSet<>();
+		
+		System.out.print("How many students in couse A: ");
+		int qty = sc.nextInt();
+		for(int i=0; i<qty;i++) {
+			int mat = sc.nextInt();
+			set.add(new Usuario(mat));
 		}
-		catch (IOException e) {
-			System.out.print("Error: "+ e.getMessage());
+		
+		System.out.println();
+		
+		System.out.print("How many students in couse B: ");
+		qty = sc.nextInt();
+		for(int i=0; i<qty;i++) {
+			int mat = sc.nextInt();
+			set.add(new Usuario(mat));
 		}
+		
+		System.out.println();
+		
+		System.out.print("How many students in couse c: ");
+		qty = sc.nextInt();
+		for(int i=0; i<qty;i++) {
+			int mat = sc.nextInt();
+			set.add(new Usuario(mat));
+		}
+		
+		System.out.println();
+		
+		System.out.print("Total Users: "+ set.size());
 		
 		sc.close();
 	}
